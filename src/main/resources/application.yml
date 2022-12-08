@@ -5,7 +5,7 @@ spring:
     name: config-server
 
   profiles:
-    active: native
+    active: git
 ---
 spring:
   cloud:
@@ -22,9 +22,11 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ksereda/Java_Advanced_Course/
+          uri: https://github.com/Viktor-Kollegov/ms-config-properties
           search-paths:
-          - "ms-config-properties/{application}/{profile}"
+          - "/{application}/{profile}"
+#    https://github.com/ksereda/Java_Advanced_Course/
+
   config:
     activate:
       on-profile: git
@@ -33,3 +35,4 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
